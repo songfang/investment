@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.investment.dao.FuturesMapper" >
+  <resultMap id="BaseResultMap" type="com.xh.investment.domain.Futures" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="jys" property="jys" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="date" property="date" jdbcType="VARCHAR" />
+    <result column="kpj" property="kpj" jdbcType="DOUBLE" />
+    <result column="zgj" property="zgj" jdbcType="DOUBLE" />
+    <result column="zdj" property="zdj" jdbcType="DOUBLE" />
+    <result column="zrsp" property="zrsp" jdbcType="DOUBLE" />
+    <result column="mj" property="mj" jdbcType="DOUBLE" />
+    <result column="maij" property="maij" jdbcType="DOUBLE" />
+    <result column="zxj" property="zxj" jdbcType="DOUBLE" />
+    <result column="jsj" property="jsj" jdbcType="DOUBLE" />
+    <result column="zrjs" property="zrjs" jdbcType="DOUBLE" />
+    <result column="ml" property="ml" jdbcType="DOUBLE" />
+    <result column="mal" property="mal" jdbcType="DOUBLE" />
+    <result column="ccl" property="ccl" jdbcType="DOUBLE" />
+    <result column="cjl" property="cjl" jdbcType="DOUBLE" />
+    <result column="time" property="time" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, name, jys, type, date, kpj, zgj, zdj, zrsp, mj, maij, zxj, jsj, zrjs, ml, 
+    mal, ccl, cjl, time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from futures
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from futures
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xh.investment.domain.Futures" >
+    insert into futures (id, code, name, 
+      jys, type, date, kpj, 
+      zgj, zdj, zrsp, mj, 
+      maij, zxj, jsj, zrjs, 
+      ml, mal, ccl, cjl, 
+      time)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{jys,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, #{kpj,jdbcType=DOUBLE}, 
+      #{zgj,jdbcType=DOUBLE}, #{zdj,jdbcType=DOUBLE}, #{zrsp,jdbcType=DOUBLE}, #{mj,jdbcType=DOUBLE}, 
+      #{maij,jdbcType=DOUBLE}, #{zxj,jdbcType=DOUBLE}, #{jsj,jdbcType=DOUBLE}, #{zrjs,jdbcType=DOUBLE}, 
+      #{ml,jdbcType=DOUBLE}, #{mal,jdbcType=DOUBLE}, #{ccl,jdbcType=DOUBLE}, #{cjl,jdbcType=DOUBLE}, 
+      #{time,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.investment.domain.Futures" >
+    insert into futures
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="jys != null" >
+        jys,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="date != null" >
+        date,
+      </if>
+      <if test="kpj != null" >
+        kpj,
+      </if>
+      <if test="zgj != null" >
+        zgj,
+      </if>
+      <if test="zdj != null" >
+        zdj,
+      </if>
+      <if test="zrsp != null" >
+        zrsp,
+      </if>
+      <if test="mj != null" >
+        mj,
+      </if>
+      <if test="maij != null" >
+        maij,
+      </if>
+      <if test="zxj != null" >
+        zxj,
+      </if>
+      <if test="jsj != null" >
+        jsj,
+      </if>
+      <if test="zrjs != null" >
+        zrjs,
+      </if>
+      <if test="ml != null" >
+        ml,
+      </if>
+      <if test="mal != null" >
+        mal,
+      </if>
+      <if test="ccl != null" >
+        ccl,
+      </if>
+      <if test="cjl != null" >
+        cjl,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jys != null" >
+        #{jys,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="kpj != null" >
+        #{kpj,jdbcType=DOUBLE},
+      </if>
+      <if test="zgj != null" >
+        #{zgj,jdbcType=DOUBLE},
+      </if>
+      <if test="zdj != null" >
+        #{zdj,jdbcType=DOUBLE},
+      </if>
+      <if test="zrsp != null" >
+        #{zrsp,jdbcType=DOUBLE},
+      </if>
+      <if test="mj != null" >
+        #{mj,jdbcType=DOUBLE},
+      </if>
+      <if test="maij != null" >
+        #{maij,jdbcType=DOUBLE},
+      </if>
+      <if test="zxj != null" >
+        #{zxj,jdbcType=DOUBLE},
+      </if>
+      <if test="jsj != null" >
+        #{jsj,jdbcType=DOUBLE},
+      </if>
+      <if test="zrjs != null" >
+        #{zrjs,jdbcType=DOUBLE},
+      </if>
+      <if test="ml != null" >
+        #{ml,jdbcType=DOUBLE},
+      </if>
+      <if test="mal != null" >
+        #{mal,jdbcType=DOUBLE},
+      </if>
+      <if test="ccl != null" >
+        #{ccl,jdbcType=DOUBLE},
+      </if>
+      <if test="cjl != null" >
+        #{cjl,jdbcType=DOUBLE},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.investment.domain.Futures" >
+    update futures
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="jys != null" >
+        jys = #{jys,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null" >
+        date = #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="kpj != null" >
+        kpj = #{kpj,jdbcType=DOUBLE},
+      </if>
+      <if test="zgj != null" >
+        zgj = #{zgj,jdbcType=DOUBLE},
+      </if>
+      <if test="zdj != null" >
+        zdj = #{zdj,jdbcType=DOUBLE},
+      </if>
+      <if test="zrsp != null" >
+        zrsp = #{zrsp,jdbcType=DOUBLE},
+      </if>
+      <if test="mj != null" >
+        mj = #{mj,jdbcType=DOUBLE},
+      </if>
+      <if test="maij != null" >
+        maij = #{maij,jdbcType=DOUBLE},
+      </if>
+      <if test="zxj != null" >
+        zxj = #{zxj,jdbcType=DOUBLE},
+      </if>
+      <if test="jsj != null" >
+        jsj = #{jsj,jdbcType=DOUBLE},
+      </if>
+      <if test="zrjs != null" >
+        zrjs = #{zrjs,jdbcType=DOUBLE},
+      </if>
+      <if test="ml != null" >
+        ml = #{ml,jdbcType=DOUBLE},
+      </if>
+      <if test="mal != null" >
+        mal = #{mal,jdbcType=DOUBLE},
+      </if>
+      <if test="ccl != null" >
+        ccl = #{ccl,jdbcType=DOUBLE},
+      </if>
+      <if test="cjl != null" >
+        cjl = #{cjl,jdbcType=DOUBLE},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.investment.domain.Futures" >
+    update futures
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      jys = #{jys,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      date = #{date,jdbcType=VARCHAR},
+      kpj = #{kpj,jdbcType=DOUBLE},
+      zgj = #{zgj,jdbcType=DOUBLE},
+      zdj = #{zdj,jdbcType=DOUBLE},
+      zrsp = #{zrsp,jdbcType=DOUBLE},
+      mj = #{mj,jdbcType=DOUBLE},
+      maij = #{maij,jdbcType=DOUBLE},
+      zxj = #{zxj,jdbcType=DOUBLE},
+      jsj = #{jsj,jdbcType=DOUBLE},
+      zrjs = #{zrjs,jdbcType=DOUBLE},
+      ml = #{ml,jdbcType=DOUBLE},
+      mal = #{mal,jdbcType=DOUBLE},
+      ccl = #{ccl,jdbcType=DOUBLE},
+      cjl = #{cjl,jdbcType=DOUBLE},
+      time = #{time,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+   <select id="getAll" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from futures
+  </select>
+</mapper>

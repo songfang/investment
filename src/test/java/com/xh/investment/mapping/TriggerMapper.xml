@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.investment.dao.TriggerMapper" >
+  <resultMap id="BaseResultMap" type="com.xh.investment.domain.Trigger" >
+    <id column="job_id" property="jobId" jdbcType="BIGINT" />
+    <id column="trigger_id" property="triggerId" jdbcType="BIGINT" />
+    <result column="trigger_name" property="triggerName" jdbcType="VARCHAR" />
+    <result column="cron_expression" property="cronExpression" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    job_id, trigger_id, trigger_name, cron_expression, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.xh.investment.domain.TriggerKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from trigger
+    where job_id = #{jobId,jdbcType=BIGINT}
+      and trigger_id = #{triggerId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.xh.investment.domain.TriggerKey" >
+    delete from trigger
+    where job_id = #{jobId,jdbcType=BIGINT}
+      and trigger_id = #{triggerId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xh.investment.domain.Trigger" >
+    insert into trigger (job_id, trigger_id, trigger_name, 
+      cron_expression, create_time, update_time
+      )
+    values (#{jobId,jdbcType=BIGINT}, #{triggerId,jdbcType=BIGINT}, #{triggerName,jdbcType=VARCHAR}, 
+      #{cronExpression,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.investment.domain.Trigger" >
+    insert into trigger
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="triggerId != null" >
+        trigger_id,
+      </if>
+      <if test="triggerName != null" >
+        trigger_name,
+      </if>
+      <if test="cronExpression != null" >
+        cron_expression,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        #{jobId,jdbcType=BIGINT},
+      </if>
+      <if test="triggerId != null" >
+        #{triggerId,jdbcType=BIGINT},
+      </if>
+      <if test="triggerName != null" >
+        #{triggerName,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null" >
+        #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.investment.domain.Trigger" >
+    update trigger
+    <set >
+      <if test="triggerName != null" >
+        trigger_name = #{triggerName,jdbcType=VARCHAR},
+      </if>
+      <if test="cronExpression != null" >
+        cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=BIGINT}
+      and trigger_id = #{triggerId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.investment.domain.Trigger" >
+    update trigger
+    set trigger_name = #{triggerName,jdbcType=VARCHAR},
+      cron_expression = #{cronExpression,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where job_id = #{jobId,jdbcType=BIGINT}
+      and trigger_id = #{triggerId,jdbcType=BIGINT}
+  </update>
+</mapper>
